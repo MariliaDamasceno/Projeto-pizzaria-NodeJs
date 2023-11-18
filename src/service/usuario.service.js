@@ -1,38 +1,36 @@
 const Usuario = require("../model/Usuario");
 
+const findAllUserService = (limit, offset) => {
+    return Usuario.find().limit(limit).skip(offset);
+};
 
 const findUserByIdService = (id) => {
     return Usuario.findById(id);
 };
 
-const findAllUserService = () => {
-    return Usuario.find();
-};
-
 const createUserService = (body) => {
     return Usuario.create(body);
-}
+};
 
 const updateUserService = (id, body) => {
     return Usuario.findByIdAndUpdate(id, body, { returnDocument: "after" });
 };
 
 const removeUserService = (id) => {
-    return Usuario.findByIdAndDelete(id);
+    return Usuario.findByIdAndRemove(id);
 };
 
 const addUserAddressService = (id, endereco) => {
-   return Usuario.findOneAndUpdate(
+    return Usuario.findOneAndUpdate(
         {
-            _id: id
+            _id: id,
         },
         {
             $push: {
-                enderecos: endereco
+                enderecos: endereco,
             }
         },
         {
-            new:true,
             rawResult: true,
         }
     );
@@ -41,7 +39,7 @@ const addUserAddressService = (id, endereco) => {
 const removeUserAddressService = (id, addressId) => {
     return Usuario.findOneAndUpdate(
         {
-            _id: id
+            _id: id,
         },
         {
             $pull: {
@@ -51,11 +49,9 @@ const removeUserAddressService = (id, addressId) => {
             }
         },
         {
-            new:true,
             rawResult: true,
         }
     );
-
 };
 
 const addUserFavProductService = (id, produto) => {

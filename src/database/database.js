@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 function connectToDatabase() {
-    mongoose.connect(process.env.URLDATABASE, {
+    mongoose.connect("mongodb://127.0.0.1:27017/pizzaria", {
         useNewUrlParser: true, //padronizações
         useUnifiedTopology: true
     }).then(() => {

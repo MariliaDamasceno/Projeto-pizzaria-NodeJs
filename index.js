@@ -6,16 +6,16 @@ const cors = require('cors');
 const usuario = require('./src/router/usuario.router');
 const authService = require("./src/service/auth.service");
 const auth = require("./src/router/auth.router"); //arquivo de rota de auth
-const produto = require("./src/router/produto.router");
-const categoria = require ("./src/router/categoria.router");
-const carrinho = require ("./src/router/carrinho.router");
+//const produto = require("./src/router/produto.router");
+//const categoria = require ("./src/router/categoria.router");
+//const carrinho = require ("./src/router/carrinho.router");
 
 
 // Conectar ao banco de dados
 connectToDatabase();
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Middlewares
 app.use(cors());
@@ -24,9 +24,9 @@ app.use(express.json());
 // Rotas
 app.use('/usuario', usuario);
 app.use("/auth", auth);
-app.use("/produto", produto);
-app.use("/categoria", categoria);
-app.use("/carrinho", carrinho);
+//app.use("/produto", produto);
+//app.use("/categoria", categoria);
+//app.use("/carrinho", carrinho);
 
 
 // Rota inicial

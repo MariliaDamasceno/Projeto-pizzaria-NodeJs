@@ -1,4 +1,4 @@
-const Usuario = require("../model/Usuario");
+const Usuario = require("../model/usuario");
 
 const findAllUserService = (limit, offset) => {
     return Usuario.find().limit(limit).skip(offset);

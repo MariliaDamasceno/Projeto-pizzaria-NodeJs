@@ -17,7 +17,7 @@ const updateUserService = (id, body) => {
 };
 
 const removeUserService = (id) => {
-    return Usuario.findByIdAndRemove(id);
+    return Usuario.findByIdAndDelete(id);
 };
 
 const addUserAddressService = (id, endereco) => {
@@ -36,23 +36,29 @@ const addUserAddressService = (id, endereco) => {
     );
 };
 
-const removeUserAddressService = (id, addressId) => {
-    return Usuario.findOneAndUpdate(
-        {
-            _id: id,
-        },
-        {
-            $pull: {
-                enderecos: {
-                    _id: addressId
-                },
-            }
-        },
-        {
-            rawResult: true,
+const removeUserAddressService = async (id, addressId) => {
+    try {
+        const usuario = await Usuario.findById(
+            id,
+            { $pull: { enderecos: { _id: addressId } } },
+            { new: true }
+        );
+
+        if (!usuario) {
+            throw new Error("Usuário não encontrado");
         }
-    );
+
+        console.log('Usuário após remoção:', usuario);
+
+        return usuario;
+    } catch (error) {
+        console.error(`Erro no serviço removeUserAddressService: ${error.message}`);
+        throw error;
+    }
 };
+
+
+
 
 const addUserFavProductService = (id, produto) => {
 

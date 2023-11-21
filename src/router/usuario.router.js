@@ -1,26 +1,22 @@
-const express = require ("express");
+const express = require("express");
 const router = express.Router();
-const UsuarioController = require ("../controller/usuario.controller")
 
-const authMiddleware = require ("../middleware/auth.middleware")
+const usuarioController = require("../controller/usuario.controller");
+const authMiddleware = require("../middleware/auth.middleware");
+const { validaUsuario, validaEndereco, validaIdParams, valida_IdBody } = require("../middleware/validacao.middleware");
+const paginacao = require("../middleware/paginacao.middleware");
 
-//rotas get
-router.get('/findById/:id', authMiddleware, UsuarioController.findUserByIdController);
-router.get('/findAll', UsuarioController.findAllUserController);
+router.get('/find/:id', authMiddleware, validaIdParams, usuarioController.findUserByIdController);
+router.get('/findAll', authMiddleware, paginacao, usuarioController.findAllUserController);
 
-//rotas post
-router.post('/create', UsuarioController.createUserController);
-router.post('/addAddress/:id',authMiddleware, UsuarioController.addUserAddressController);
-router.post('/favProduct/:id', UsuarioController.addUserFavProduct);
+router.post('/create', validaUsuario, usuarioController.createUserController);
+router.post('/addAddress/:id', authMiddleware, validaIdParams, validaEndereco, usuarioController.addUserAddressController);
+//router.post('/addFavProduct/:id', authMiddleware, validaIdParams, valida_IdBody, usuarioController.addUserFavProductController);
 
+router.put('/update/:id', authMiddleware, validaIdParams, validaUsuario, usuarioController.updateUserController);
 
-//rotas put
-router.put('/update/:id', authMiddleware, UsuarioController.updateUserController);
-
-//rotas delete
-router.delete('/remove/:id', authMiddleware, UsuarioController.removeUserController);
-router.delete('/removeAddress/:id',authMiddleware, UsuarioController.removeUserAddressController);
-router.delete('/removeFavProduct',authMiddleware, UsuarioController.removeUserFavProduct);
-
+router.delete('/remove/:id', authMiddleware, validaIdParams, usuarioController.removeUserController);
+router.delete('/removeAddress', authMiddleware, usuarioController.removeUserAddressController);
+//router.delete('/removeFavProduct/:id', authMiddleware, validaIdParams, usuarioController.removeUserFavProductController);
 
 module.exports = router;

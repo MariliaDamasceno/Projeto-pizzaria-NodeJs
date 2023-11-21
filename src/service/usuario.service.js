@@ -1,4 +1,4 @@
-const Usuario = require("../model/usuario");
+const Usuario = require("../model/Usuario");
 
 const findAllUserService = (limit, offset) => {
     return Usuario.find().limit(limit).skip(offset);
@@ -17,7 +17,7 @@ const updateUserService = (id, body) => {
 };
 
 const removeUserService = (id) => {
-    return Usuario.findByIdAndDelete(id);
+    return Usuario.findByIdAndRemove(id);
 };
 
 const addUserAddressService = (id, endereco) => {
@@ -36,37 +36,61 @@ const addUserAddressService = (id, endereco) => {
     );
 };
 
-const removeUserAddressService = async (id, addressId) => {
-    try {
-        const usuario = await Usuario.findById(
-            id,
-            { $pull: { enderecos: { _id: addressId } } },
-            { new: true }
-        );
-
-        if (!usuario) {
-            throw new Error("Usuário não encontrado");
+const removeUserAddressService = (id, addressId) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull: {
+                enderecos: {
+                    _id: addressId
+                },
+            }
+        },
+        {
+            rawResult: true,
         }
-
-        console.log('Usuário após remoção:', usuario);
-
-        return usuario;
-    } catch (error) {
-        console.error(`Erro no serviço removeUserAddressService: ${error.message}`);
-        throw error;
-    }
+    );
 };
-
-
-
 
 const addUserFavProductService = (id, produto) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $push: {
+                produtos_fav: {
+                    _id: produto._id,
+                }
+            }
+        },
+        {
+            rawResult: true,
+        }
+    )
+};
+
+const removeUserFavProductService = (id, produto) => {
+    return Usuario.findOneAndUpdate(
+        {
+            _id: id,
+        },
+        {
+            $pull: {
+                produtos_fav: {
+                    _id: produto._id,
+                }
+            }
+        },
+        {
+            rawResult: true,
+        }
+    )
 
 };
 
-const removeFavProductService = (produto) => {
-
-}
 module.exports = {
     findUserByIdService,
     findAllUserService,
@@ -76,5 +100,5 @@ module.exports = {
     addUserAddressService,
     removeUserAddressService,
     addUserFavProductService,
-    removeFavProductService
+    removeUserFavProductService
 }

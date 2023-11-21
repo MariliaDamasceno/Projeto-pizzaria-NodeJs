@@ -1,29 +1,30 @@
-const Categoria = require("../model/Categoria");
+const Categoria = require("../model/categoria");
 
-const findAllCategoriaService = (limit, offset) => {
-    return Categoria.find().limit(limit).skip(offset);
-};
 
-const findByIdCategoriaService = (id) => {
+const findCategoriaByIdService = (id) => {
     return Categoria.findById(id);
 };
 
+const findAllCategoriaService = ( limit, offset ) => {
+    return Categoria.find().limit(limit).skip(offset);;
+}
+
 const createCategoriaService = (body) => {
-    return Categoria.create(body);
+    return Categoria.create(body)
 };
 
-const updateCategoriaService = (id, body) => {
-    return Categoria.findByIdAndUpdate(id, body, { returnDocument: "after" });
-};
+const updateCategoriaService = (id, body ) => {
+    return Categoria.findByIdAndUpdate(id, body, {returnDocument: "after"});
+}
 
-const removeCategoriaService = (id) => {
-    return Categoria.findByIdAndRemove(id);
+const deleteCategoriaService = (id) => {
+    return Categoria.findByIdAndDelete(id);
 };
 
 module.exports = {
+    findCategoriaByIdService,
     findAllCategoriaService,
-    findByIdCategoriaService,
     createCategoriaService,
     updateCategoriaService,
-    removeCategoriaService
+    deleteCategoriaService
 }

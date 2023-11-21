@@ -1,8 +1,8 @@
 const categoriaService = require("../service/categoria.service");
 
-const findAllCategoryController = async (req, res) => {
+const findAllCategoriaController = async (req, res) => {
     try {
-        res.status(200).send(await categoriaService.findAllCategoryService(req.query.limit, req.query.offset));
+        res.status(200).send(await categoriaService.findAllCategoriaService(req.query.limit, req.query.offset));
     }
     catch (err) {
         console.log(`erro: ${err.message}`);
@@ -10,9 +10,9 @@ const findAllCategoryController = async (req, res) => {
     }
 };
 
-const findByIdCategoryController = async (req, res) => {
+const findByIdCategoriaController = async (req, res) => {
     try {
-        res.status(200).send(await categoriaService.findByIdCategoryService(req.params.id));
+        res.status(200).send(await categoriaService.findByIdCategoriaService(req.params.id));
     }
     catch (err) {
         console.log(`erro: ${err.message}`);
@@ -20,21 +20,21 @@ const findByIdCategoryController = async (req, res) => {
     }
 };
 
-const createCategoryController = async (req, res) => {
+const createCategoriaController = async (req, res) => {
     try {
-        res.status(201).send(await categoriaService.createCategoryService(req.body));
+        res.status(201).send(await categoriaService.createCategoriaService(req.body));
 
     }
     catch (err) {
-        console.log(`erro: ${err.message} erro createCategoryController! `);
+        console.log(`erro: ${err.message} erro create categoriaController! `);
         return res.status(500).send({ message: `Erro inesperado, tente novamente!` });
     }
 };
 
-const updateCategoryController = async (req, res) => {
+const updateCategoriaController = async (req, res) => {
     try {
         console.log("categoria atualizada com sucesso!");
-        res.status(200).send(await categoriaService.updateCategoryService(req.params.id, req.body));
+        res.status(200).send(await categoriaService.updateCategoriaService(req.params.id, req.body));
     }
     catch (err) {
         console.log(`erro: ${err.message}`);
@@ -42,9 +42,9 @@ const updateCategoryController = async (req, res) => {
     }
 };
 
-const removeCategoryController = async (req, res) => {
+const removeCategoriaController = async (req, res) => {
     try {
-        res.status(200).send(await categoriaService.removeCategoryService(req.params.id));
+        res.status(200).send(await categoriaService.removeCategoriaService(req.params.id));
     }
     catch (err) {
         console.log(`erro: ${err.message}`);
@@ -53,9 +53,9 @@ const removeCategoryController = async (req, res) => {
 };
 
 module.exports = {
-    findAllCategoryController,
-    findByIdCategoryController,
-    createCategoryController,
-    updateCategoryController,
-    removeCategoryController
+    findAllCategoriaController,
+    findByIdCategoriaController,
+    createCategoriaController,
+    updateCategoriaController,
+    removeCategoriaController
 }

@@ -3,14 +3,14 @@ require("dotenv").config();
 const connectToDatabase = require('./src/database/database');
 const cors = require('cors');
 
-const usuario = require('./src/router/usuario.router');
+const usuario = require('./src/router/usuario.router');//arquivo de rota usuario
 const authService = require("./src/service/auth.service");
 const auth = require("./src/router/auth.router"); //arquivo de rota de auth
 const produto = require("./src/router/produto.router");
 const categoria = require ("./src/router/categoria.router");
 const sabores = require ("./src/router/sabores.router");
-//const carrinho = require ("./src/router/carrinho.router");
-//const pedido = require ("./src/router/pedido.router");
+const carrinho = require ("./src/router/carrinho.router");
+const pedido = require ("./src/router/pedido.router");
 //const docs = require ("./src/router/docs.router");
 
 // Conectar ao banco de dados
@@ -29,8 +29,8 @@ app.use("/auth", auth);
 app.use("/produto", produto);
 app.use("/categoria", categoria);
 app.use("/sabores", sabores);
-//app.use("/carrinho", carrinho);
-//app.use("/pedido", pedido);
+app.use("/carrinho", carrinho);
+app.use("/pedido", pedido);
 //app.use("/docs", docs);
 
 

@@ -11,7 +11,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/",
+            "url": "http://localhost:3001/",
             "description": "API de teste LOCAL"
         }  
     ],
@@ -1012,7 +1012,7 @@
                         "bearerAuth": []
                     }
                 ],
-                "summary": "Lista o produto que corresponde com o Id informado.",
+                "summary": "Atualiza o produto que corresponde com o Id informado.",
                 "description": "Rota responsavel por atualizar os dados do produto informado pelo Id",
                 "tags": [
                     "Produto"
@@ -1105,7 +1105,7 @@
                         "bearerAuth": []
                     }
                 ],
-                "summary": "Lista o produto que corresponde com o Id informado.",
+                "summary": "Deleta o produto que corresponde com o Id informado.",
                 "description": "Rota responsavel por remover produto apartir de um Id informado.",
                 "tags": [
                     "Produto"

@@ -11,7 +11,7 @@ const categoria = require ("./src/router/categoria.router");
 const sabores = require ("./src/router/sabores.router");
 const carrinho = require ("./src/router/carrinho.router");
 const pedido = require ("./src/router/pedido.router");
-//const docs = require ("./src/router/docs.router");
+const docs = require ("./src/router/docs.router");
 
 // Conectar ao banco de dados
 connectToDatabase();
@@ -31,7 +31,7 @@ app.use("/categoria", categoria);
 app.use("/sabores", sabores);
 app.use("/carrinho", carrinho);
 app.use("/pedido", pedido);
-//app.use("/docs", docs);
+app.use("/docs", docs);
 
 
 // Rota inicial

@@ -5,13 +5,13 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.1"
+    "mongoose": "^8.0.1",
+    "swagger-ui-express": "^5.0.0"
   },
   "name": "projeto-crud-pizzaria",
   "description": "Crud completo de uma pizzaria. Projeto final do modulo 2 curso de desenvolvimento FullStack",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "nodemon index.js"
   },

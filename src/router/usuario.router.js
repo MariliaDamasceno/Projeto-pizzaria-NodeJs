@@ -11,12 +11,12 @@ router.get('/findAll', authMiddleware, paginacao, usuarioController.findAllUserC
 
 router.post('/create', validaUsuario, usuarioController.createUserController);
 router.post('/addAddress/:id', authMiddleware, validaIdParams, validaEndereco, usuarioController.addUserAddressController);
-//router.post('/addFavProduct/:id', authMiddleware, validaIdParams, valida_IdBody, usuarioController.addUserFavProductController);
+router.post('/addFavProduct/:id', authMiddleware, validaIdParams, valida_IdBody, usuarioController.addUserFavProductController);
 
 router.put('/update/:id', authMiddleware, validaIdParams, validaUsuario, usuarioController.updateUserController);
 
 router.delete('/remove/:id', authMiddleware, validaIdParams, usuarioController.removeUserController);
-router.delete('/removeAddress', authMiddleware, usuarioController.removeUserAddressController);
-//router.delete('/removeFavProduct/:id', authMiddleware, validaIdParams, usuarioController.removeUserFavProductController);
+router.delete('/removeAddress/:id', authMiddleware, usuarioController.removeUserAddressController);
+router.delete('/removeFavProduct/:id', authMiddleware, validaIdParams, usuarioController.removeUserFavProductController);
 
 module.exports = router;

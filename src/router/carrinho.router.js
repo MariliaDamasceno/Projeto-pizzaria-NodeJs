@@ -7,7 +7,7 @@ const { validaCarrinho, validaIdParams, validaProdutoCarrinhoPedido } = require(
 const paginacao = require("../middleware/paginacao.middleware");
 
 router.get("/findAll", authMiddleware, paginacao, carrinhoController.findAllCarrinhoController);
-router.get("/find/:id", authMiddleware, validaIdParams, carrinhoController.findByIdCarrinhoController);
+router.get("/findById/:id", authMiddleware, validaIdParams, carrinhoController.findByIdCarrinhoController);
 
 router.post("/create", authMiddleware, validaProdutoCarrinhoPedido, validaCarrinho, carrinhoController.createCarrinhoController);
 

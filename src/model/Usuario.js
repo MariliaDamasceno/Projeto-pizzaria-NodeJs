@@ -17,21 +17,21 @@ const UsuarioSchema = new mongoose.Schema({
   ],
 
   createdAt: { type: Date, required: true, default: Date.now() },
-  // produtosFav:[
-  //   {
-  //      _id:{ type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref:"produtos"},
-  //    createdAt: {type: Date, required:true, default: Date.now()}
-  // }
-  //],
+  produtosFav: [
+    {
+      _id: { type: mongoose.Schema.Types.ObjectId, required: true, unique: true, ref: "produtos" },
+      createdAt: { type: Date, required: true, default: Date.now() }
+    }
+  ],
   admin: { type: Boolean, default: false }
 
 });
 
 UsuarioSchema.pre("save", async function (next) {
-    if (this.senha) {
+  if (this.senha) {
     this.senha = await bcrypt.hash(this.senha, 10);
   }
-   next();
+  next();
 });
 
 const Usuario = mongoose.model("Usuarios", UsuarioSchema);

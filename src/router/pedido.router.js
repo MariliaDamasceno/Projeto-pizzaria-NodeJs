@@ -6,7 +6,7 @@ const authMiddleware = require("../middleware/auth.middleware");
 const { validaPedido, validaIdParams, validaProdutoCarrinhoPedido } = require("../middleware/validacao.middleware");
 const paginacao = require("../middleware/paginacao.middleware");
 
-router.get("/find/:id", authMiddleware, validaIdParams, pedidoController.findByIdPedidoController);
+router.get("/findById/:id", authMiddleware, validaIdParams, pedidoController.findByIdPedidoController);
 router.get("/findAll", authMiddleware, paginacao, pedidoController.findAllPedidosController);
 
 router.post("/create", authMiddleware, validaProdutoCarrinhoPedido, validaPedido, pedidoController.createPedidoController);

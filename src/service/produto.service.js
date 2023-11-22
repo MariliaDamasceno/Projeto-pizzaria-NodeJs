@@ -17,7 +17,7 @@ const updateProductService = (id, body) => {
 };
 
 const removeProductService = (id) => {
-    return Produto.findByIdAndRemove(id);
+    return Produto.findByIdAndDelete(id);
 };
 
 const addCategoriaProdutoService = (id, categoria) => {

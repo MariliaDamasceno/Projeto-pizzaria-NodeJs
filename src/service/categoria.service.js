@@ -1,7 +1,7 @@
 const Categoria = require("../model/categoria");
 
 
-const findCategoriaByIdService = (id) => {
+const findByIdCategoriaService = (id) => {
     return Categoria.findById(id);
 };
 
@@ -17,14 +17,14 @@ const updateCategoriaService = (id, body ) => {
     return Categoria.findByIdAndUpdate(id, body, {returnDocument: "after"});
 }
 
-const deleteCategoriaService = (id) => {
+const removeCategoriaService = (id) => {
     return Categoria.findByIdAndDelete(id);
 };
 
 module.exports = {
-    findCategoriaByIdService,
+    findByIdCategoriaService,
     findAllCategoriaService,
     createCategoriaService,
     updateCategoriaService,
-    deleteCategoriaService
+    removeCategoriaService
 }

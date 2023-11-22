@@ -13,7 +13,7 @@ const createPedidoService = (body) => {
 };
 
 const removePedidoService = (id) => {
-    return Pedido.findByIdAndRemove(id);
+    return Pedido.findByIdAndDelete(id);
 };
 
 const updateStatusPedidoService = (id) => {

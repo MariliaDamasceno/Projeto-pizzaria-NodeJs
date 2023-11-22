@@ -17,7 +17,7 @@ const updateCarrinhoService = (id, body) => {
 };
 
 const removeCarrinhoService = (id) => {
-    return Carrinho.findByIdAndRemove(id);
+    return Carrinho.findByIdAndDelete(id);
 };
 
 module.exports = {

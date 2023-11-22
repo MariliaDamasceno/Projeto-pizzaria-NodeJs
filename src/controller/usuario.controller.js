@@ -98,7 +98,6 @@ const addUserAddressController = async (req, res) => {
         console.log(`erro: ${err.message}`);
     }
 };
-
 const removeUserAddressController = async (req, res) => {
     try {
         const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId);
@@ -123,30 +122,29 @@ const removeUserAddressController = async (req, res) => {
         res.status(500).send({ Message: `Erro inesperado tente novamente! ` });
         console.log(`erro: ${err.message}`);
     }
+}
+
+
+const addUserFavProductController = async (req, res) => {
+    try {
+        res.status(201).send(await userService.addUserFavProductService(req.params.id, req.body));
+    }
+    catch (err) {
+        res.status(500).send({ Message: `Erro inesperado tente novamente! ` });
+        console.log(`erro: ${err.message}`);
+    }
 };
 
-
-
-
-const addUserFavProduct = async (req, res) => {
+const removeUserFavProductController = async (req, res) => {
     try {
-
-
-
-    } catch (err) {
-        console.log(`Erro: ${err.message}`);
-        return res.status(500).send("Erro inesperado, tente novamente mais tarde");
+        res.status(200).send(await userService.removeUserFavProductService(req.params.id, req.body));
     }
-}
-
-const removeUserFavProduct = async (req, res) => {
-    try {
-
-    } catch (err) {
-        console.log(`Erro: ${err.message}`);
-        return res.status(500).send("Erro inesperado, tente novamente mais tarde");
+    catch (err) {
+        res.status(500).send({ Message: `Erro inesperado tente novamente! ` });
+        console.log(`erro: ${err.message}`);
     }
-}
+};
+
 
 module.exports = {
     findUserByIdController,
@@ -156,7 +154,7 @@ module.exports = {
     removeUserController,
     addUserAddressController,
     removeUserAddressController,
-    addUserFavProduct,
-    removeUserFavProduct
+    addUserFavProductController,
+    removeUserFavProductController
 
 }

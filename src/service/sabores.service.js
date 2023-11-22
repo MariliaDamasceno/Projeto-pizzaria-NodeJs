@@ -17,7 +17,7 @@ const updateSaboreService = (id, body) => {
 };
 
 const removeSaboreService = (id) => {
-    return Sabore.findByIdAndRemove(id);
+    return Sabore.findByIdAndDelete(id);
 };
 
 module.exports = {

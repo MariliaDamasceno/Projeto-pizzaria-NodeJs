@@ -6,18 +6,18 @@ const authMiddleware = require("../middleware/auth.middleware");
 const { validaProduto, validaIdParams, valida_IdBody } = require("../middleware/validacao.middleware");
 const paginacao = require("../middleware/paginacao.middleware");
 
-router.get("/find/:id", authMiddleware,  validaIdParams,  produtoController.findProductByIdController);
+router.get("/findById/:id", authMiddleware,  validaIdParams,  produtoController.findProductByIdController);
 router.get("/findAll", authMiddleware,  paginacao,  produtoController.findAllProductController);
 
 router.post("/create",  validaProduto,  produtoController.createProductController);
 router.post("/addCategoria/:id", authMiddleware,  validaIdParams, valida_IdBody,  produtoController.addCategoriaProdutoController);
-router.post("/addSabore/:id", authMiddleware,  validaIdParams, valida_IdBody,  produtoController.addSaboreProdutoController);
+router.post("/addSabores/:id", authMiddleware,  validaIdParams, valida_IdBody,  produtoController.addSaboreProdutoController);
 
 
 router.put("/update/:id", authMiddleware,  validaIdParams, validaProduto,  produtoController.updateProductController);
 
 router.delete("/delete/:id", authMiddleware,  validaIdParams,  produtoController.removeProductController);
-router.delete("/rmCategoria/:id", authMiddleware,  validaIdParams, valida_IdBody,  produtoController.rmCategoriaProdutoController);
+router.delete("/removeCategoria/:id", authMiddleware,  validaIdParams, valida_IdBody,  produtoController.rmCategoriaProdutoController);
 router.delete("/removeSabore/:id", authMiddleware,  validaIdParams, valida_IdBody,  produtoController.rmSaboreProdutoController);
 
 module.exports = router;

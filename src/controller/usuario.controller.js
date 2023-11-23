@@ -112,7 +112,7 @@ const removeUserAddressController = async (req, res) => {
                 res.status(400).send({ message: `Algo deu errado no endereço, não foi removido. Tente novamente!` });
             }
         } else {
-            console.log("Endereço encontrado. Removendo...");
+            console.log("Endereço removido com sucesso!");
             res.status(200).send({ message: `Endereço removido com sucesso!` });
         }
 

@@ -53,7 +53,7 @@ Projeto Express CRUD completo de uma pizzaria, desenvolvido no padrão MVC, cone
 
 ### Carrinho
 
-* Get - carrinho/findAll**
+* **Get - carrinho/findAll**
 * **Get - carrinho/findById**
 * **Post - carrinho/create**
 * **Put - carrinho/update**

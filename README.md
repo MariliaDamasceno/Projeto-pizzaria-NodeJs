@@ -1,6 +1,6 @@
 # Projeto-CRUD-pizzaria
 
-![Logo da Minha Empresa](https://solidstudio.io/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Flofvu8al%2Fproduction%2F915aa873ca2e568f347fd579430ef38dd18cd8f3-420x308.png&w=1080&q=75.png)
+![Logo NodeJs](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png)
 
 Projeto final Modulo Back-end Development do Curso Desenvolvimento FullStack da Italents.
 

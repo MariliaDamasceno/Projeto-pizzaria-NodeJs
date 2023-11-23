@@ -101,28 +101,26 @@ const addUserAddressController = async (req, res) => {
 const removeUserAddressController = async (req, res) => {
     try {
         const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId);
+       
+        if (endereco && endereco.value) {
+            const userAddresses = endereco.value.enderecos || [];
+            const found = userAddresses.some((valor) => valor._id == req.body.addressId);
 
-        let found = false;
-
-        endereco.value.enderecos.map((valor, chave) => {
-            if (valor._id == req.body.addressId) {
-                found = true;
+            if (!found) {
+            } else {
+                console.log("Endereço não encontrado.");
+                res.status(400).send({ message: `Algo deu errado no endereço, não foi removido. Tente novamente!` });
             }
-        });
-
-
-        if (found) {
+        } else {
+            console.log("Endereço encontrado. Removendo...");
             res.status(200).send({ message: `Endereço removido com sucesso!` });
         }
-        else {
-            res.status(400).send({ message: `Algo deu errado no endereço, não foi removido tente novamente!` })
-        }
+
+    } catch (err) {
+        console.error("Erro durante a remoção de endereço:", err);
+        res.status(500).send({ Message: `Erro inesperado. Tente novamente!` });
     }
-    catch (err) {
-        res.status(500).send({ Message: `Erro inesperado tente novamente! ` });
-        console.log(`erro: ${err.message}`);
-    }
-}
+};
 
 
 const addUserFavProductController = async (req, res) => {

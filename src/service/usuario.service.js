@@ -36,25 +36,20 @@ const addUserAddressService = (id, endereco) => {
     );
 };
 
-const removeUserAddressService = (id, addressId) => {
-    return Usuario.findOneAndUpdate(
-        {
-            _id: id,
-        },
-        {
-            $pull: {
-                enderecos: {
-                    _id: addressId
-                },
-            }
-        },
-        {
-            rawResult: true,
+const removeUserAddressService = async (id, addressId) => {
+    
+        const result = await Usuario.findOneAndUpdate(
+            { _id: id },
+            { $pull: { enderecos: { _id: addressId } } },
+            { rawResult: true }
+        );
+
+        if (!result) {
+            throw new Error("User not found or address not removed.");
         }
-    );
-};
 
-
+        return result;
+    }
 
 const addUserFavProductService = (id, produto) => {
     return Usuario.findOneAndUpdate(

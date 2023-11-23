@@ -13,26 +13,70 @@ Projeto Express CRUD completo de uma pizzaria, desenvolvido no padrão MVC, cone
 3. execute: npm i
 4. rode usando: npm run dev
 
+## Principais Recursos
+
+### usuário
+
+* **Get - /usuario/findAll**
+* **Get - /usuario/findById**
+* **Post - usuario/create**
+* **Post - usuario/addAddress**
+* **Post - usuario/addFavProduct**
+* **Put - usuario/update**
+* **Delete - usuario/remove**
+* **Delete - usuario/removeAddres**s
+* **Delete - usuario/removeFavProduct**
+
+### Produto
+
+* **Get - produto/findAll**
+* **Get - produto/findById**
+* **Post - produto/create**
+* **Put - produto/update**
+* **Delete - produto/remove**
+
+### Pedido
+
+* **Get - pedido/findAll**
+* **Get - pedido/findById**
+* **Post - pedido/create**
+* **Put - pedido/updateStatusPedido**
+* **Delete - pedido/remove**
+
+### Categoria
+
+* **Get - categoria/findAll**
+* **Get - categoria/findById**
+* **Post - categoria/create**
+* **Put - categoria/update**
+* **Delete - categoria/remove**
+
+### Carrinho
+
+* Get - carrinho/findAll**
+* **Get - carrinho/findById**
+* **Post - carrinho/create**
+* **Put - carrinho/update**
+* **Delete - carrinho/remove**
+
+### Sabores
+
+* **Get - sabores/findAll**
+* **Get - sabores/findById**
+* **Post - sabores/create**
+* **Put - sabores/update**
+* **Delete - sabores/remove**
+
 ## Enpoints
 
 Abaixo poderá visualizar uma tabela com os endpoints da aplicação.
 
-### Usuario
 
 
-| Code | Resposta                                                      |
-| ------ | --------------------------------------------------------------- |
-| 400  | Retorna uma mensagem informando o erro                        |
-| 401  | Retorna o erro de autenticação                              |
-| 404  | Retorna uma mensagem informando que não encontrou o usuário |
-
-### Produto
-
-
-| Code | Resposta                                                     |
-| :----- | -------------------------------------------------------------- |
-| 200  | Retorna um produto válido                                   |
-| 201  | Retorna a criação de um produto novo                       |
-| 400  | Retorna uma mensagem informando o erro                       |
-| 401  | Retorna o erro de autenticação                             |
-| 404  | Retorna uma mensagem informando que não encontrou o produto |
+| Code | Resposta                                                                  |
+| :----- | --------------------------------------------------------------------------- |
+| 200  | Retorna como válido                                                      |
+| 201  | Retorna uma nova criação                                                |
+| 400  | Retorna uma mensagem informando o erro                                    |
+| 401  | Retorna o erro de autenticação                                          |
+| 404  | Retorna uma mensagem informando que o item solicitado não foi encontrado |
